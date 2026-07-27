@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Restock - Mo Gerzz Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        vespa: {
+                            yellow: '#F5D66E', /* Retro Yellow */
+                            orange: '#E86237', /* Retro Orange */
+                            teal: '#23838E',   /* Retro Teal */
+                            dark: '#FAF9F6',   /* Cream background */
+                            panel: '#FFFFFF',  /* Pure white panel */
+                            border: '#E6E4DF'  /* Soft vintage border */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF9F6;
+        }
+        .sidebar-active {
+            background-color: rgba(232, 98, 55, 0.08);
+            color: #E86237;
+            border-right: 3px solid #E86237;
+        }
+        .card-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+        }
+    </style>
+</head>
+<body class="text-slate-600 font-sans antialiased flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-vespa-panel border-r border-vespa-border flex flex-col transition-all duration-300 z-20">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-vespa-border">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-vespa-orange to-yellow-500 text-white flex items-center justify-center mr-3 shadow-lg shadow-vespa-orange/20">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                </svg>
+            </div>
+            <span class="text-slate-800 font-bold text-lg tracking-wide">Mo Gerzz</span>
+        </div>
+
+        <!-- Nav Links -->
+        <nav class="flex-1 py-6 space-y-1 overflow-y-auto">
+            <a href="index.html" class="text-slate-500 hover:text-slate-800 flex items-center px-6 py-3 text-sm font-medium transition-colors hover:bg-slate-50 border-r-3 border-transparent">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Dashboard
+            </a>
+            <a href="products.html" class="text-slate-500 hover:text-slate-800 flex items-center px-6 py-3 text-sm font-medium transition-colors hover:bg-slate-50 border-r-3 border-transparent">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                Master Barang
+            </a>
+            <a href="transactions.html" class="text-slate-500 hover:text-slate-800 flex items-center px-6 py-3 text-sm font-medium transition-colors hover:bg-slate-50 border-r-3 border-transparent">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                Transaksi
+            </a>
+            <a href="restock-report.html" class="sidebar-active flex items-center px-6 py-3 text-sm font-medium transition-colors">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                Laporan Restock
+            </a>
+        </nav>
+        
+        <!-- User Info -->
+        <div class="p-4 border-t border-vespa-border">
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-800 font-bold text-sm">A</div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-slate-800">Admin Utama</p>
+                    <a href="login.html" class="text-xs text-slate-400 hover:text-vespa-orange transition-colors">Logout</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <div class="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[120px] opacity-20 pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] bg-vespa-yellow/30 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none"></div>
+
+        <!-- Header -->
+        <header class="h-16 flex items-center justify-between px-8 border-b border-vespa-border/50 bg-vespa-dark/80 backdrop-blur-md z-10">
+            <h1 class="text-xl font-semibold text-slate-800">Laporan Restock</h1>
+        </header>
+
+        <!-- Content Scrollable -->
+        <div class="flex-1 overflow-y-auto p-8 z-10">
+            
+            <!-- Header Area with Buttons -->
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-medium text-slate-800">Laporan Restock (Butuh Segera Dipesan)</h2>
+                <div class="flex space-x-3">
+                    <button class="bg-white hover:bg-slate-50 text-slate-700 py-2 px-4 rounded-lg flex items-center transition-colors border border-slate-300 text-sm shadow-sm">
+                        <svg class="w-4 h-4 mr-2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                        Print PDF
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded-lg flex items-center transition-colors text-sm font-semibold shadow-sm">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Export Excel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Alert Info -->
+            <div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-6 flex items-start">
+                <div class="flex-shrink-0 mt-0.5">
+                    <svg class="h-5 w-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-bold text-red-700">Peringatan Kritis!</h3>
+                    <p class="mt-1 text-sm text-red-600">
+                        Terdapat 3 barang yang stoknya sudah menyentuh atau berada di bawah Reorder Point (ROP). Harap segera hubungi supplier yang bersangkutan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Restock Table -->
+            <div class="card-glass rounded-2xl border border-red-200 overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200">
+                                <th class="px-6 py-4 font-medium">Nama Barang</th>
+                                <th class="px-6 py-4 font-medium text-center">Stok Saat Ini</th>
+                                <th class="px-6 py-4 font-medium text-center" title="Reorder Point">Batas ROP</th>
+                                <th class="px-6 py-4 font-medium text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-slate-200/60">
+                            <tr class="bg-red-50/30 hover:bg-red-50/70 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="font-semibold text-slate-800 text-base">Oli Mesin Motul 5100 10W-40</div>
+                                    <div class="text-xs text-slate-400 mt-1">ID: #PRD-002</div>
+                                </td>
+                                <td class="px-6 py-5 text-center">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-500 text-white shadow-lg shadow-red-500/10">
+                                        4 Botol
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-center text-slate-700 font-medium">
+                                    5 Botol
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <a href="#" class="inline-flex items-center text-xs font-semibold text-white bg-green-600 hover:bg-green-500 px-4 py-2 rounded-lg transition-colors shadow-lg shadow-green-600/10">
+                                        Pesan via WA
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="bg-red-50/30 hover:bg-red-50/70 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="font-semibold text-slate-800 text-base">Kampas Rem Depan Vespa Sprint</div>
+                                    <div class="text-xs text-slate-400 mt-1">ID: #PRD-005</div>
+                                </td>
+                                <td class="px-6 py-5 text-center">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-500 text-white shadow-lg shadow-red-500/10">
+                                        1 Set
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-center text-slate-700 font-medium">
+                                    4 Set
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <a href="#" class="inline-flex items-center text-xs font-semibold text-white bg-green-600 hover:bg-green-500 px-4 py-2 rounded-lg transition-colors shadow-lg shadow-green-600/10">
+                                        Pesan via WA
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="bg-red-50/30 hover:bg-red-50/70 transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="font-semibold text-slate-800 text-base">V-Belt Mitsuboshi Vespa Matic</div>
+                                    <div class="text-xs text-slate-400 mt-1">ID: #PRD-012</div>
+                                </td>
+                                <td class="px-6 py-5 text-center">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-500 text-white shadow-lg shadow-red-500/10">
+                                        2 Pcs
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-center text-slate-700 font-medium">
+                                    2 Pcs
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <a href="#" class="inline-flex items-center text-xs font-semibold text-white bg-green-600 hover:bg-green-500 px-4 py-2 rounded-lg transition-colors shadow-lg shadow-green-600/10">
+                                        Pesan via WA
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

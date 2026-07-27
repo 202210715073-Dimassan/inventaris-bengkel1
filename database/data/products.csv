@@ -1,0 +1,22 @@
+kode_barang,nama_barang,kategori,harga_satuan,lead_time,max_lead_time,stok_awal,supplier
+GEN-CM1691,Roller Assembly Standard Piaggio,Servis & Performa,45000,3,5,30,PT Piaggio Pratama
+GEN-638853,Busi Standard NGK CR8EB Piaggio,Servis & Performa,95000,3,5,25,PT Piaggio Pratama
+GEN-B01807,Filter Udara Standard Piaggio,Servis & Performa,90000,3,5,35,PT Piaggio Pratama
+GEN-1A0033,V-Belt Standard Piaggio,Servis & Performa,295000,3,5,40,PT Piaggio Pratama
+GEN-651356,Kampas Rem Depan Standard Piaggio,Keamanan & Kaki-Kaki,265000,3,5,28,PT Piaggio Pratama
+GEN-82635R,Filter Oli Mesin Piaggio,Servis & Performa,85000,3,5,30,PT Piaggio Pratama
+MOD-OLIPM,Oli Mesin Ipone Scooter 10W-40 Premium,Servis & Performa,145000,1,3,48,CV Abadi Karunia
+MOD-RLBRT,Roller Racing BRT / Kawahara (Set),Servis & Performa,95000,1,3,20,CV Abadi Karunia
+MOD-VBCVT,Paket V-Belt & Per CVT Racing Anti-Greged,Servis & Performa,380000,1,3,25,CV Abadi Karunia
+MOD-BSIRD,Busi Racing Iridium NGK / Denso,Servis & Performa,120000,1,3,20,PT Mobility Indonesia
+MOD-FLFRX,Filter Udara Racing Ferrox Replacement,Servis & Performa,450000,1,3,15,CV Abadi Karunia
+MOD-KNSHJ,Knalpot Racing Shijiro / Prospeed Bolt-On,Servis & Performa,1850000,1,3,10,CV Abadi Karunia
+MOD-KMZEL,Kampas Rem Aftermarket Zelioni / Malossi,Keamanan & Kaki-Kaki,135000,1,3,30,CV Abadi Karunia
+MOD-SBYSS,Shockbreaker Aftermarket YSS / Scarlet (Set),Keamanan & Kaki-Kaki,1450000,1,3,8,CV Abadi Karunia
+MOD-BTPRT,Baut Proti Titanium Variasi (Eceran),Keamanan & Kaki-Kaki,25000,1,3,200,CV Abadi Karunia
+MOD-HGDMN,Handgrip Aftermarket Harris / Domino,Aksesoris & Body,225000,1,3,12,CV Abadi Karunia
+MOD-SPBAR,Spion Bar End / Tangkai Pendek Sporty,Aksesoris & Body,175000,1,3,15,CV Abadi Karunia
+MOD-HKCNC,Gantungan Barang (Hook) CNC Aluminium,Aksesoris & Body,85000,1,3,20,CV Abadi Karunia
+MOD-WSMCA,Flyscreen / Windshield Mika Retro,Aksesoris & Body,350000,1,3,10,CV Abadi Karunia
+MOD-CRBAR,Crashbar Pelindung Body Vespa (Set),Aksesoris & Body,650000,1,3,8,CV Abadi Karunia
+MOD-LEDRG,Lampu LED Utama + Ring Bezel Black Matte,Aksesoris & Body,450000,1,3,10,CV Abadi Karunia

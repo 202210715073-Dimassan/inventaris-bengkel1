@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mo Gerzz Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        vespa: {
+                            yellow: '#F5D66E', /* Retro Yellow */
+                            orange: '#E86237', /* Retro Orange */
+                            teal: '#23838E',   /* Retro Teal */
+                            dark: '#FAF9F6',   /* Cream background */
+                            panel: '#FFFFFF',  /* Pure white panel */
+                            border: '#E6E4DF'  /* Soft vintage border */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF9F6;
+            background-image: radial-gradient(circle at 50% -20%, #FAF9F6, #FAF9F6);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 text-slate-600 font-sans antialiased">
+
+    <!-- Decorative background elements -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-vespa-yellow/30 rounded-full mix-blend-multiply filter blur-[120px] opacity-20"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-vespa-orange/20 rounded-full mix-blend-multiply filter blur-[120px] opacity-15"></div>
+    </div>
+
+    <div class="w-full max-w-md">
+        <!-- Logo/Brand -->
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-vespa-orange to-yellow-500 text-white mb-4 shadow-lg shadow-vespa-orange/30 transform transition hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold tracking-tight text-slate-800">Mo Gerzz</h1>
+            <p class="text-sm text-slate-500 mt-2">Inventory Management System</p>
+        </div>
+
+        <!-- Login Form -->
+        <div class="glass-panel rounded-3xl p-8 shadow-2xl">
+            <form action="index.html" class="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-slate-600 mb-2">Email Admin</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                        </div>
+                        <input id="email" name="email" type="email" autocomplete="email" required class="block w-full pl-10 px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-vespa-orange/20 focus:border-vespa-orange transition-colors sm:text-sm" placeholder="admin@mogerzz.com">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="password" class="block text-sm font-medium text-slate-600">Password</label>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full pl-10 px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-vespa-orange/20 focus:border-vespa-orange transition-colors sm:text-sm" placeholder="••••••••">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 bg-white border-slate-300 rounded text-vespa-orange focus:ring-vespa-orange focus:ring-offset-white">
+                        <label for="remember-me" class="ml-2 block text-sm text-slate-500">
+                            Ingat saya
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-vespa-orange hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-vespa-orange transition-all duration-200 transform hover:-translate-y-0.5">
+                        Masuk Dashboard
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <p class="text-center text-xs text-slate-400 mt-8">
+            &copy; 2026 Mo Gerzz Vespa. All rights reserved.
+        </p>
+    </div>
+
+</body>
+</html>

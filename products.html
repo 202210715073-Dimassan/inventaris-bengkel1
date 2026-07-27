@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Barang - Mo Gerzz Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        vespa: {
+                            yellow: '#F5D66E', /* Retro Yellow */
+                            orange: '#E86237', /* Retro Orange */
+                            teal: '#23838E',   /* Retro Teal */
+                            dark: '#FAF9F6',   /* Cream background */
+                            panel: '#FFFFFF',  /* Pure white panel */
+                            border: '#E6E4DF'  /* Soft vintage border */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF9F6;
+        }
+        .sidebar-active {
+            background-color: rgba(232, 98, 55, 0.08);
+            color: #E86237;
+            border-right: 3px solid #E86237;
+        }
+        .card-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+        }
+    </style>
+</head>
+<body class="text-slate-600 font-sans antialiased flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-vespa-panel border-r border-vespa-border flex flex-col transition-all duration-300 z-20">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-vespa-border">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-vespa-orange to-yellow-500 text-white flex items-center justify-center mr-3 shadow-lg shadow-vespa-orange/20">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24 stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                </svg>
+            </div>
+            <span class="text-slate-800 font-bold text-lg tracking-wide">Mo Gerzz</span>
+        </div>
+
+        <!-- Nav Links -->
+        <nav class="flex-1 py-6 space-y-1 overflow-y-auto">
+            <a href="index.html" class="text-slate-500 hover:text-slate-800 flex items-center px-6 py-3 text-sm font-medium transition-colors hover:bg-slate-50 border-r-3 border-transparent">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Dashboard
+            </a>
+            <a href="products.html" class="sidebar-active flex items-center px-6 py-3 text-sm font-medium transition-colors">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                Master Barang
+            </a>
+            <a href="transactions.html" class="text-slate-500 hover:text-slate-800 flex items-center px-6 py-3 text-sm font-medium transition-colors hover:bg-slate-50 border-r-3 border-transparent">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                Transaksi
+            </a>
+            <a href="restock-report.html" class="text-slate-500 hover:text-slate-800 flex items-center px-6 py-3 text-sm font-medium transition-colors hover:bg-slate-50 border-r-3 border-transparent">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                Laporan Restock
+            </a>
+        </nav>
+        
+        <!-- User Info -->
+        <div class="p-4 border-t border-vespa-border">
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-800 font-bold text-sm">A</div>
+                <div class="ml-3">
+                    <p class="text-sm font-medium text-slate-800">Admin Utama</p>
+                    <a href="login.html" class="text-xs text-slate-400 hover:text-vespa-orange transition-colors">Logout</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <div class="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[120px] opacity-20 pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] bg-vespa-yellow/30 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none"></div>
+
+        <!-- Header -->
+        <header class="h-16 flex items-center justify-between px-8 border-b border-vespa-border/50 bg-vespa-dark/80 backdrop-blur-md z-10">
+            <h1 class="text-xl font-semibold text-slate-800">Master Barang</h1>
+            <div class="flex items-center space-x-4">
+                <button class="bg-vespa-orange hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center transition-colors text-sm" onclick="document.getElementById('addModal').classList.remove('hidden')">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    Tambah Barang
+                </button>
+            </div>
+        </header>
+
+        <!-- Content Scrollable -->
+        <div class="flex-1 overflow-y-auto p-8 z-10">
+            
+            <!-- Filters & Search -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="relative w-64">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-xl leading-5 bg-white text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-vespa-orange focus:border-vespa-orange sm:text-sm transition-colors" placeholder="Cari barang...">
+                </div>
+            </div>
+
+            <!-- Products Table -->
+            <div class="card-glass rounded-2xl border border-vespa-border/50 overflow-hidden shadow-xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider border-b border-vespa-border/50">
+                                <th class="px-6 py-4 font-medium">ID</th>
+                                <th class="px-6 py-4 font-medium">Nama Barang</th>
+                                <th class="px-6 py-4 font-medium text-center">Stok</th>
+                                <th class="px-6 py-4 font-medium text-center" title="Lead Time (Hari)">LT (Hari)</th>
+                                <th class="px-6 py-4 font-medium text-center" title="Safety Stock">SS</th>
+                                <th class="px-6 py-4 font-medium text-center" title="Reorder Point">ROP</th>
+                                <th class="px-6 py-4 font-medium text-center">Status</th>
+                                <th class="px-6 py-4 font-medium text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-slate-200/60">
+                            <!-- Normal Item -->
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 text-slate-400">#PRD-001</td>
+                                <td class="px-6 py-4 font-medium text-slate-800">Busi NGK C7HSA Vespa</td>
+                                <td class="px-6 py-4 text-center font-semibold text-slate-800">45</td>
+                                <td class="px-6 py-4 text-center text-slate-500">3</td>
+                                <td class="px-6 py-4 text-center text-slate-500">10</td>
+                                <td class="px-6 py-4 text-center text-blue-600 font-medium">15</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="inline-flex px-2 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 border border-green-200">Aman</span>
+                                </td>
+                                <td class="px-6 py-4 text-right space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-800 transition-colors font-medium">Edit</button>
+                                    <button class="text-red-600 hover:text-red-800 transition-colors font-medium">Hapus</button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Warning Item (ROP) -->
+                            <tr class="bg-red-50 hover:bg-red-100/50 transition-colors relative group">
+                                <!-- Red border indicator on the left -->
+                                <td class="px-6 py-4 text-slate-400 relative">
+                                    <div class="absolute inset-y-0 left-0 w-1 bg-red-500"></div>
+                                    #PRD-002
+                                </td>
+                                <td class="px-6 py-4 font-medium text-slate-800">Oli Mesin Motul 5100 10W-40</td>
+                                <td class="px-6 py-4 text-center font-bold text-red-600">4</td>
+                                <td class="px-6 py-4 text-center text-slate-500">5</td>
+                                <td class="px-6 py-4 text-center text-slate-500">3</td>
+                                <td class="px-6 py-4 text-center text-blue-600 font-medium">5</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="inline-flex px-2 py-1 rounded-md text-xs font-medium bg-red-50 text-red-600 border border-red-200">Butuh Restock</span>
+                                </td>
+                                <td class="px-6 py-4 text-right space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-800 transition-colors font-medium">Edit</button>
+                                    <button class="text-red-600 hover:text-red-800 transition-colors font-medium">Hapus</button>
+                                </td>
+                            </tr>
+
+                            <!-- Normal Item -->
+                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                <td class="px-6 py-4 text-slate-400">#PRD-003</td>
+                                <td class="px-6 py-4 font-medium text-slate-800">Ban Pirelli Angel Scooter 120/70-12</td>
+                                <td class="px-6 py-4 text-center font-semibold text-slate-800">12</td>
+                                <td class="px-6 py-4 text-center text-slate-500">7</td>
+                                <td class="px-6 py-4 text-center text-slate-500">4</td>
+                                <td class="px-6 py-4 text-center text-blue-600 font-medium">8</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="inline-flex px-2 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 border border-green-200">Aman</span>
+                                </td>
+                                <td class="px-6 py-4 text-right space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-800 transition-colors font-medium">Edit</button>
+                                    <button class="text-red-600 hover:text-red-800 transition-colors font-medium">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="px-6 py-4 border-t border-vespa-border/50 text-xs text-slate-400 flex justify-between">
+                    <span>Menampilkan 3 dari 124 barang</span>
+                    <div class="flex space-x-1">
+                        <button class="px-2 py-1 bg-slate-100 border border-slate-200 rounded hover:bg-slate-200 text-slate-600">&lt;</button>
+                        <button class="px-2 py-1 bg-vespa-orange text-white rounded font-semibold">1</button>
+                        <button class="px-2 py-1 bg-slate-100 border border-slate-200 rounded hover:bg-slate-200 text-slate-600">2</button>
+                        <button class="px-2 py-1 bg-slate-100 border border-slate-200 rounded hover:bg-slate-200 text-slate-600">3</button>
+                        <button class="px-2 py-1 bg-slate-100 border border-slate-200 rounded hover:bg-slate-200 text-slate-600">&gt;</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Tambah Barang -->
+    <div id="addModal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="document.getElementById('addModal').classList.add('hidden')"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Modal panel -->
+            <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-slate-200">
+                <div class="px-6 py-5 border-b border-slate-100">
+                    <h3 class="text-lg leading-6 font-medium text-slate-800" id="modal-title">Tambah Master Barang Baru</h3>
+                </div>
+                <div class="px-6 py-5">
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-500 mb-1">Nama Barang</label>
+                            <input type="text" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-vespa-orange/20 focus:border-vespa-orange">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-500 mb-1">Supplier</label>
+                                <select class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-vespa-orange/20 focus:border-vespa-orange">
+                                    <option>PT Motul Indonesia</option>
+                                    <option>Astra Otoparts</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-500 mb-1">Stok Awal</label>
+                                <input type="number" value="0" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-vespa-orange/20 focus:border-vespa-orange">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-500 mb-1" title="Rata-rata Lead Time">Lead Time (Hari)</label>
+                                <input type="number" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-vespa-orange/20 focus:border-vespa-orange">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-500 mb-1" title="Maksimal Lead Time">Max Lead Time (Hari)</label>
+                                <input type="number" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-800 focus:outline-none focus:ring-2 focus:ring-vespa-orange/20 focus:border-vespa-orange">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-700 mt-2">
+                            <span class="font-semibold text-blue-800">Info:</span> Nilai Average Usage, Max Usage, SS, dan ROP akan dihitung secara otomatis oleh sistem saat ada transaksi.
+                        </div>
+                    </form>
+                </div>
+                <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex justify-end space-x-3">
+                    <button type="button" class="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors text-sm font-medium" onclick="document.getElementById('addModal').classList.add('hidden')">Batal</button>
+                    <button type="button" class="px-4 py-2 bg-vespa-orange text-white rounded-lg hover:bg-orange-600 transition-colors text-sm font-semibold">Simpan Barang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
